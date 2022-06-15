@@ -1,5 +1,5 @@
 {
-  description = "My Nix OS distros";
+  description = "Modules for NixOS distros";
 
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
@@ -13,6 +13,12 @@
         environment.systemPackages = with pkgs; [ git ];
         programs.git.enable = true;
         programs.git.config.init.defaultBranch = "main";
+      };
+
+      raspi4 = { pkgs, ... }: {
+        boot.loader.grub.enable = false;
+        boot.loader.generic-extlinux-compatible.enable = true;
+        boot.kernelPackages = pkgs.linuxPackages_rpi4;
       };
     };
   };
