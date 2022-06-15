@@ -9,6 +9,16 @@
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
     nixosModules = {
+
+      flakes = { pkgs, ... }: {
+        nix = {
+          package = pkgs.nixFlakes;
+          extraOptions = ''
+            experimental-features = nix-command flakes
+          '';
+        };
+      };
+
       git = { pkgs, ... }: {
         environment.systemPackages = with pkgs; [ git ];
         programs.git.enable = true;
