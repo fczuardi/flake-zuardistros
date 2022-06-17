@@ -53,6 +53,7 @@
         ]);
       };
 
+      caddy = import ./modules/caddy.nix;
     };
   };
 }
