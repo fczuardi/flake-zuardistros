@@ -4,4 +4,5 @@
   raspi4 = import ./raspi4.nix;
   mdns = import ./mdns.nix;
   caddy = import ./caddy.nix;
+  caddy-https = import ./caddy-https.nix;
 }
